@@ -1,0 +1,128 @@
+:root {
+  --bg-color: rgb(240, 240, 240);
+  --text-color: rgb(56, 56, 56);
+}
+
+.dark-mode {
+  --bg-color: rgb(56, 56, 56);
+  --text-color: rgb(240, 240, 240);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+}
+
+/* Abstract orange vector circles */
+.orange-ring {
+  position: absolute;
+  border: 8px solid #ff7a00;
+  border-radius: 50%;
+  pointer-events: none; /* Keeps rings from blocking clicks */
+
+  z-index: 1;
+}
+
+.ring-top-right {
+  width: 300px;
+  height: 300px;
+  top: -60px;
+  right: -50px;
+  opacity: 0.85;
+}
+
+.ring-bottom-left {
+  width: 120px;
+  height: 120px;
+  bottom: -80px;
+  left: 80px;
+  opacity: 0.85;
+}
+
+.content {
+  width: 300px;
+  height: 700px;
+  border-radius: 48px;
+  /* background-color: rgba(255, 255, 255, 60%); */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  z-index: 2;
+
+  box-shadow:
+    0px 30px 60px rgba(0, 0, 0, 0.12),
+    0px 12px 24px rgba(0, 0, 0, 0.08);
+
+  backdrop-filter: blur(8px);
+}
+
+.mode-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.mode-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, .3);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 28px;
+  width: 28px;
+  left:4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .3s;
+  transition: .3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #f07400;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+
+
+  position: absolute;
+  bottom: -1px;
+  height: 36px;
+  width: 36px;
+
+  background-color: rgb(56, 56, 56);
+}
