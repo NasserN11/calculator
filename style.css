@@ -126,3 +126,20 @@ input:checked + .slider:before {
 
   background-color: rgb(56, 56, 56);
 }
+
+
+
+
+
+.buttons-content {
+  display: flex;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.numbers {
+}
