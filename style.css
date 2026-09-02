@@ -54,9 +54,8 @@ body {
 
 .content {
   width: 300px;
-  height: 700px;
+  height: 600px;
   border-radius: 48px;
-  /* background-color: rgba(255, 255, 255, 60%); */
   background-color: var(--bg-color);
   color: var(--text-color);
   z-index: 2;
@@ -66,6 +65,11 @@ body {
     0px 12px 24px rgba(0, 0, 0, 0.08);
 
   backdrop-filter: blur(8px);
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-evenly;
 }
 
 .mode-switch {
@@ -130,16 +134,155 @@ input:checked + .slider:before {
 
 
 
-
 .buttons-content {
   display: flex;
+  gap: 12px;
+
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px 16px;
 }
+
 
 .buttons {
   display: flex;
   flex-direction: column;
+  gap: 12px;
   flex-wrap: wrap;
+
+}
+
+.clear-erase {
+  display: flex;
+  gap: 12px;
+
 }
 
 .numbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 192px;
+  max-width: 192px;
+
+
+  box-shadow:
+    4px 4px 10px #d1d5db,
+    -4px -4px -10px #ffffff,
+    inset 1px 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+.operators {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.numbers, .operators {
+  margin-bottom: 16px;
+}
+
+
+.btn {
+  width: 56px;
+  height: 56px;
+  /* padding: 8px; */
+
+  border-radius: 16px;
+  box-sizing: border-box;
+
+
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.clear-erase > .btn {
+    background: linear-gradient(145deg, #dce1e8, #cbd2db);
+    color: #5a6069;
+    box-shadow:
+      4px 4px 10px #bec5cd,
+      -4px -4px 10px #f0f4f8;
+}
+
+.numbers > .btn {
+  background: linear-gradient(145deg, #fbfbfb, #eff1f4);
+  color: #70757a;
+}
+
+.operators > .btn {
+  background: linear-gradient(145deg, #f18c16, #d77604);
+  color: #ffffff;
+
+  box-shadow:
+    4px 4px 10px #c8ced6,
+    -2px -2px 6px rgba(241, 140 22, 0.3),
+    inset 2px 2px 4px rgba(255, 255, 255, .5),
+    inset -2px -2px 6px rgba(0, 0, 0, .1);
+}
+
+.btn:active {
+  box-shadow: 
+    inset 4px 4px 8px rgba(165, 170, 178, .5),
+    inset -4px -4px 8px rgba(255, 255, 255, .8);
+    transform: scale(0.97);
+}
+
+
+
+.clear-erase > .btn:active {
+
+}
+.numbers > .btn:active {
+  
+}
+.operators > .btn:active {
+  
+}
+
+
+
+.clear-erase > .btn:hover {
+
+}
+.numbers > .btn:hover {
+  
+}
+.operators > .btn:hover {
+  
+}
+
+.zero {
+  flex-grow: 2;
+}
+
+
+
+.display {
+  /* border: 1px solid black; */
+  width: 300px;
+  height: 200px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 8px;
+  box-sizing: border-box;
+  padding: 16px 24px;
+}
+
+.operation {
+  font-size: 14px;
+  color: #70757a;
+  margin-right: 4px;
+}
+
+.result {
+  font-size: 40px;
 }
