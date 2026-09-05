@@ -30,25 +30,78 @@ function divide(a, b) {
 }
 
 
+
+let firstNumber = "";
+let operator = "";
+let secondNumber = "";
+
+
 function operate(operator, a, b) {
-    switch(operator) {
+    a = parseFloat(a);
+    b = parseFloat(b);
+    switch (operator) {
         case "+":
-            add(a, b);
+            return add(a, b);
             break;
 
         case "-":
-            subtract(a, b);
+            return subtract(a, b);
             break;
 
-        case "*":
-            multiply(a, b);
+        case "x":
+            return multiply(a, b);
             break;
 
-        case "/":
-            divide(a, b);
+        case "÷":
+            return divide(a, b);
             break;
 
         default:
             console.log("Wrong operator");
     }
 }
+
+
+const resultDiv = document.querySelector(".result");
+const numberButtons = document.querySelectorAll(".numbers .btn");
+const operatorButtons = document.querySelectorAll(".operators .btn");
+let userNumberInput = "";
+
+numberButtons.forEach((button) => {
+
+    button.addEventListener('click', () => {
+        if (userNumberInput.length <= 10) {
+            userNumberInput += button.textContent;
+
+            if (operator === "") {
+                firstNumber = userNumberInput; 
+            }
+            else {
+                secondNumber = userNumberInput
+            }
+            
+            resultDiv.textContent = userNumberInput;
+        }
+    })
+})
+
+operatorButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (button.classList.contains("equal")) {
+            if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
+                const result = operate(operator, firstNumber, secondNumber);
+                resultDiv.textContent = result;
+
+                firstNumber = result;
+                secondNumber = "";
+                operator = "";
+            }
+        }
+        else {
+            if (userNumberInput !== "") {
+                operator = button.textContent.trim();
+                userNumberInput = "";
+            }
+        }
+    })
+})
