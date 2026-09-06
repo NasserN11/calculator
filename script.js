@@ -132,3 +132,17 @@ operatorButtons.forEach((button) => {
         }
     })
 })
+
+
+
+
+const clearButton = document.querySelector(".clear");
+clearButton.addEventListener('click', () => {
+    firstNumber = "";
+    secondNumber = "";
+    operator = "";
+    userNumberInput = "";
+
+    operationDiv.textContent = "";
+    resultDiv.textContent = "0";
+})
