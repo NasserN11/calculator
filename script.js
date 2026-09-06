@@ -72,16 +72,29 @@ let userNumberInput = "";
 numberButtons.forEach((button) => {
 
     button.addEventListener('click', () => {
+
+        const pressedButton = button.textContent.trim();
+
         if (userNumberInput.length <= 10) {
+
+            if (pressedButton === ".") {
+                if (userNumberInput.at(-1) === ".") {
+                    return;
+                }
+                
+                if (userNumberInput === "") {
+                    userNumberInput = "0";
+                }
+            }
+            
             userNumberInput += button.textContent;
 
             if (operator === "") {
-                firstNumber = userNumberInput; 
+                firstNumber = userNumberInput;
             }
             else {
                 secondNumber = userNumberInput
             }
-            
             resultDiv.textContent = userNumberInput;
         }
     })
@@ -95,9 +108,12 @@ operatorButtons.forEach((button) => {
             if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
                 result = operate(operator, firstNumber, secondNumber);
 
-                if (!Number.isInteger(result)) {
-                    result = result.toFixed(2);
+                if (typeof result === "number") {
+                    if (!Number.isInteger(result)) {
+                        result = result.toFixed(2);
+                    }
                 }
+
                 operationDiv.textContent = firstNumber + " " + operator + " " + secondNumber;
                 resultDiv.textContent = result;
 
@@ -111,8 +127,10 @@ operatorButtons.forEach((button) => {
             if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
                 let result = operate(operator, firstNumber, secondNumber);
 
-                if (!Number.isInteger(result)) {
-                    result = result.toFixed(2);
+                if (typeof result === "number") {
+                    if (!Number.isInteger(result)) {
+                        result = result.toFixed(2);
+                    }
                 }
 
                 operationDiv.textContent = firstNumber + " " + operator + " " + secondNumber;
