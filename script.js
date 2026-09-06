@@ -25,6 +25,7 @@ function multiply(a, b) {
 function divide(a, b) {
     if (b === 0) {
         console.log("Cannot divide by zero");
+        return "Error";
     }
     return a / b;
 }
@@ -63,6 +64,7 @@ function operate(operator, a, b) {
 
 
 const resultDiv = document.querySelector(".result");
+const operationDiv = document.querySelector(".operation");
 const numberButtons = document.querySelectorAll(".numbers .btn");
 const operatorButtons = document.querySelectorAll(".operators .btn");
 let userNumberInput = "";
@@ -85,21 +87,46 @@ numberButtons.forEach((button) => {
     })
 })
 
+let result = "";
+
 operatorButtons.forEach((button) => {
     button.addEventListener('click', () => {
         if (button.classList.contains("equal")) {
             if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
-                const result = operate(operator, firstNumber, secondNumber);
+                result = operate(operator, firstNumber, secondNumber);
+
+                if (!Number.isInteger(result)) {
+                    result = result.toFixed(2);
+                }
+                operationDiv.textContent = firstNumber + " " + operator + " " + secondNumber;
                 resultDiv.textContent = result;
 
                 firstNumber = result;
                 secondNumber = "";
                 operator = "";
+                userNumberInput = "";
             }
         }
         else {
-            if (userNumberInput !== "") {
+            if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
+                let result = operate(operator, firstNumber, secondNumber);
+
+                if (!Number.isInteger(result)) {
+                    result = result.toFixed(2);
+                }
+
+                operationDiv.textContent = firstNumber + " " + operator + " " + secondNumber;
+                resultDiv.textContent = result;
+
+                firstNumber = result;
+                secondNumber = "";
                 operator = button.textContent.trim();
+                userNumberInput = "";
+            }
+
+            else if (userNumberInput !== "") {
+                operator = button.textContent.trim();
+                operationDiv.textContent = firstNumber + operator;
                 userNumberInput = "";
             }
         }
