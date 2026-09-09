@@ -86,7 +86,7 @@ numberButtons.forEach((button) => {
                     userNumberInput = "0";
                 }
             }
-            
+
             userNumberInput += button.textContent;
 
             if (operator === "") {
@@ -170,6 +170,14 @@ const backspaceButton = document.querySelector(".backspace");
 backspaceButton.addEventListener('click', () => {
     userNumberInput = userNumberInput.slice(0, -1);
     resultDiv.textContent = userNumberInput;
+})
+
+const percentButton = document.querySelector(".percent");
+percentButton.addEventListener('click', () => {
+    if (!userNumberInput.includes("%") && userNumberInput !== "") {
+        userNumberInput = userNumberInput + "%";
+        resultDiv.textContent = userNumberInput;
+    }
 })
 
 
