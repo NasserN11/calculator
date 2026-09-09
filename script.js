@@ -171,3 +171,25 @@ backspaceButton.addEventListener('click', () => {
     userNumberInput = userNumberInput.slice(0, -1);
     resultDiv.textContent = userNumberInput;
 })
+
+
+
+// Keyboard support
+window.addEventListener('keydown', (event) => {
+
+    let key = event.key;
+
+    if (key === "Enter") key = "=";
+    if (key === "*") key = "x";
+    if (key === "/") key = "÷";
+    if (key === "Escape") key = "C";
+    if (key === "Backspace") key = "⌫";
+    
+    const allButtons = document.querySelectorAll(".btn");
+    allButtons.forEach((button) => {
+        if (button.textContent.trim() === key) {
+            event.preventDefault();
+            button.click();
+        }
+    })
+})
