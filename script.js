@@ -164,3 +164,10 @@ clearButton.addEventListener('click', () => {
     operationDiv.textContent = "";
     resultDiv.textContent = "0";
 })
+
+
+const backspaceButton = document.querySelector(".backspace");
+backspaceButton.addEventListener('click', () => {
+    userNumberInput = userNumberInput.slice(0, -1);
+    resultDiv.textContent = userNumberInput;
+})
