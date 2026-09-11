@@ -1,5 +1,5 @@
 # Calculator
-A modren web calculator built with Vanilla JavaScript, HTML5, and CSS3 Flexbox. It allows users to make minimal aclculations.
+A modren web calculator built with Vanilla JavaScript, HTML5, and CSS3 Flexbox. It allows users to make minimal calculations.
 
 ## Live Demo
 https://nassern11.github.io/calculator/
